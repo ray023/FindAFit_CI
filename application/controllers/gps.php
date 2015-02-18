@@ -25,6 +25,7 @@ class Gps extends CI_Controller {
 
         $this->load->model('Affiliates_model');
         $this->load->model('Stats_model');
+        $this->load->model('Audit_model');
 
         $latitude	=   $this->uri->segment(LATITUDE);
         $longitude	=   $this->uri->segment(LONGITUDE);
@@ -36,6 +37,18 @@ class Gps extends CI_Controller {
         $stat_data['longitude']     =   $longitude;
         $stat_data['result_count']  =   $result_count;
         $this->Stats_model->save_stat($stat_data);
+        
+        if (!is_numeric($latitude) || !is_numeric($longitude))
+        {
+            $audit_data['controller']	=   'address';
+            $audit_data['ip_address']	=   $_SERVER['REMOTE_ADDR'];
+            $audit_data['short_description']=   'Non-numeric latitude or longitude';
+            $audit_data['full_info']	=   'latitude:  '.$latitude.'  longitude:'.$longitude;
+            $this->Audit_model->save_audit_log($audit_data);
+            
+            $latitude = 51.1788;
+            $longitude = 1.8262;
+        }
 
         if (is_numeric($result_count) && $result_count <= RETURN_THRESHHOLD)
         {
