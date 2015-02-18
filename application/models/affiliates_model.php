@@ -12,25 +12,34 @@ class Affiliates_model extends CI_Model {
 		parent::__construct();
 	}
         
-	function get_closest_crossfits($latitude = 0, $longitude	=	0, $results_count = 5)
+        function get_affiliates($limit = 100)
+        {
+            $this->db->limit($limit);
+            $query = $this->db->get('affiliates');
+
+            return $query->result();
+        }
+        
+	function get_affiliates_by_location($latitude = 0, $longitude	=	0, $limit = 5)
 	{
-		$sql	=	"
-						SELECT 
-							affil_name,
-							url,
-							latitude,
-							longitude,
-							TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1) AS distance
-						FROM 
-							affiliates_affiliates f
-						ORDER BY 
-							distance
-						LIMIT ".$results_count." 
-						";
+		$sql	=   "
+                                SELECT 
+                                    affil_name,
+                                    url,
+                                    latitude,
+                                    longitude,
+                                    TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1) AS distance,
+                                    '' AS software
+                                FROM 
+                                    affiliates f
+                                ORDER BY 
+                                    distance
+                                LIMIT ".$limit." 
+                            ";
 		
 		$query		= $this->db->query($sql);	
 
-		return $query->result_array();
+		return $query->result();
 
 	}
 	
