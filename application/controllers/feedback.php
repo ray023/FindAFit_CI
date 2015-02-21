@@ -20,9 +20,9 @@ class Feedback extends CI_Controller {
             define('UUID', 7);
             define('VERSION', 8);
 
-            $this->load->model('Find_a_fit_model');
+            $this->load->model('Feedback_model');
 
-            $feedback_count =   $this->Find_a_fit_model->get_count_of_todays_feedback();
+            $feedback_count =   $this->Feedback_model->get_count_of_todays_feedback();
 
             if ($feedback_count > 500)
             {
@@ -40,7 +40,7 @@ class Feedback extends CI_Controller {
                     'device_info_version' =>  $this->uri->segment(VERSION),
              );
 
-            $feedback_count =   $this->Find_a_fit_model->save_feedback($data);
+            $feedback_count =   $this->Feedback_model->save_feedback($data);
 
             echo 'Feedback submitted successfully.  Thank-you!';
 

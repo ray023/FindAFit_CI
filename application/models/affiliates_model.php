@@ -24,12 +24,14 @@ class Affiliates_model extends CI_Model {
 	{
 		$sql	=   "
                                 SELECT 
+                                    af_id,
                                     affil_name,
                                     url,
                                     latitude,
                                     longitude,
                                     TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1) AS distance,
-                                    '' AS software
+                                    software,
+                                    drop_in_rate
                                 FROM 
                                     affiliates f
                                 ORDER BY 
