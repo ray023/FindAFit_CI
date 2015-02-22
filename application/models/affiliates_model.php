@@ -34,7 +34,10 @@ class Affiliates_model extends CI_Model {
                                     longitude,
                                     TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1) AS distance,
                                     software,
-                                    drop_in_rate
+                                    drop_in_rate,
+                                    twitter,
+                                    facebook,
+                                    email
                                 FROM 
                                     affiliates f
                                 ORDER BY 
