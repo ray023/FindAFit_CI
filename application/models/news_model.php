@@ -14,7 +14,7 @@ class News_model extends CI_Model {
         
         function get_news($limit = 100)
         {
-            $this->db->select('news_id, news_date, details');
+            $this->db->select("news_id, DATE_FORMAT(news_date,'%b %d %Y %h:%i %p') as news_date, details", FALSE);
             $this->db->order_by('news_date', 'desc'); 
             $this->db->limit($limit);
             $query = $this->db->get('news');
