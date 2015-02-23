@@ -37,7 +37,8 @@ class Affiliates_model extends CI_Model {
                                     drop_in_rate,
                                     twitter,
                                     facebook,
-                                    email
+                                    email,
+                                    CONCAT('http://maps.google.com/?saddr=".$latitude.",".$longitude."&daddr=', latitude, ',' , longitude) AS nav_link
                                 FROM 
                                     affiliates f
                                 ORDER BY 
