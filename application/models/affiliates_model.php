@@ -38,7 +38,8 @@ class Affiliates_model extends CI_Model {
                                     twitter,
                                     facebook,
                                     email,
-                                    CONCAT('http://maps.google.com/?saddr=".$latitude.",".$longitude."&daddr=', latitude, ',' , longitude) AS nav_link
+                                    CONCAT('http://maps.google.com/?saddr=".$latitude.",".$longitude."&daddr=', latitude, ',' , longitude) AS nav_link,
+                                    instagram
                                 FROM 
                                     affiliates f
                                 ORDER BY 
