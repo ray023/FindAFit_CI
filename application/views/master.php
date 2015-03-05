@@ -10,9 +10,10 @@
 		<?php //Don't allow user to pinch and zoom on browser.  This may not be an optial setting but trying it to fix Barbell calculator issues ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> 
 		
-		<?php echo link_tag('css/bootstrap.css'); ?>
-                <?php echo link_tag('css/bootstrap-responsive.css'); ?>
-		<?php echo link_tag('css/bootstrap-theme.css'); ?>
+                <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+                <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+                <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
 	
 		<?php header('Content-type: text/html; charset=utf-8');?>
 		<?php if (strpos($_SERVER['HTTP_HOST'], 'findafit.info') !== false): ?>
