@@ -31,13 +31,13 @@ class Feedback extends CI_Controller {
             }
 
             $data = array(
-                    'ip_address'  =>   $_SERVER['REMOTE_ADDR'],
-                    'user_feedback' => str_replace('%20', ' ', $this->uri->segment(USER_FEEDBACK)),
-                    'device_info_cordova' =>  $this->uri->segment(CORDOVA),
-                    'device_info_model' =>  $this->uri->segment(MODEL),
-                    'device_info_platform' =>  $this->uri->segment(PLATFORM),
-                    'device_info_uuid' =>  $this->uri->segment(UUID),
-                    'device_info_version' =>  $this->uri->segment(VERSION),
+                    'ip_address'            =>  $_SERVER['REMOTE_ADDR'],
+                    'user_feedback'         =>  $this->uri->segment(USER_FEEDBACK),
+                    'device_info_cordova'   =>  $this->uri->segment(CORDOVA),
+                    'device_info_model'     =>  $this->uri->segment(MODEL),
+                    'device_info_platform'  =>  $this->uri->segment(PLATFORM),
+                    'device_info_uuid'      =>  $this->uri->segment(UUID),
+                    'device_info_version'   =>  $this->uri->segment(VERSION),
              );
             
             foreach ($data as $key => $value) {
