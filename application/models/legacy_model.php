@@ -12,17 +12,47 @@ class Legacy_model extends CI_Model {
 		parent::__construct();
 	}
         
+        public function get_faf_history()
+	{
+		$sql	=   "
+                                SELECT 
+                                    created_date
+                                    ,faf_source
+                                    , CASE WHEN IFNULL(processed,0) = 0 THEN 
+                                            CASE WHEN IFNULL(search_term,'') = '' THEN  CONCAT_WS(',',latitude,longitude) 
+                                            ELSE search_term END
+                                            ELSE 
+                                                CASE WHEN IFNULL(search_term,'') = '' THEN  
+                                                    CASE WHEN country_political_short_code = 'US' THEN CONCAT_WS(', ',locality_political, administrative_area_level_1) 
+                                                    ELSE CONCAT_WS(', ',country_political_long_code, administrative_area_level_1) END
+                                                ELSE
+                                                    REPLACE(search_term,'%20',' ')
+                                                END
+                                        END AS location_data
+                                FROM 
+                                    stats fafs 
+                                ORDER BY 
+                                        fafs.created_date DESC";
+
+		$query = $this->db->query($sql);
+		
+		if ($query->num_rows() == 0)
+				return false;
+		
+		return $query->result_array();		
+	}
+        
         public function processs_record($data)
         {            
             $data['modified_date']	=	date("Y-m-d H:i:s");
-            $this->db->update('stats',   $data, 'faf_stats_id = '.$data['faf_stats_id']);
+            $this->db->update('stats',   $data, 'stats_id = '.$data['stats_id']);
         }
         
         public function get_unprocessed_faf_records()
         {
 		$sql	=   "
                                 SELECT 
-                                        faf_stats_id
+                                        stats_id
                                         ,latitude
                                         ,longitude
                                         ,ifnull(search_term,'') as search_term

@@ -32,13 +32,17 @@ class Feedback extends CI_Controller {
 
             $data = array(
                     'ip_address'  =>   $_SERVER['REMOTE_ADDR'],
-                    'user_feedback' =>  $this->uri->segment(USER_FEEDBACK),
+                    'user_feedback' => str_replace('%20', ' ', $this->uri->segment(USER_FEEDBACK)),
                     'device_info_cordova' =>  $this->uri->segment(CORDOVA),
                     'device_info_model' =>  $this->uri->segment(MODEL),
                     'device_info_platform' =>  $this->uri->segment(PLATFORM),
                     'device_info_uuid' =>  $this->uri->segment(UUID),
                     'device_info_version' =>  $this->uri->segment(VERSION),
              );
+            
+            foreach ($data as $key => $value) {
+                $data[$key] =  str_replace('%2C',',',str_replace('%27','\'',str_replace('%20', ' ', $value)));
+            }
 
             $feedback_count =   $this->Feedback_model->save_feedback($data);
 
@@ -52,7 +56,7 @@ class Feedback extends CI_Controller {
             $this->email->from('ray@wod-minder.com', 'WOD-Minder Admin');
             $this->email->to('ray023@gmail.com');
             $this->email->subject('Find A Fit Feedback');
-            $this->email->message($this->uri->segment(USER_FEEDBACK));
+            $this->email->message($data['user_feedback']);
             $this->email->send();
 
             return;
