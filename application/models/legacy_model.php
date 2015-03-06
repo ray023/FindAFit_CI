@@ -26,7 +26,7 @@ class Legacy_model extends CI_Model {
                                                     CASE WHEN country_political_short_code = 'US' THEN CONCAT_WS(', ',locality_political, administrative_area_level_1) 
                                                     ELSE CONCAT_WS(', ',country_political_long_code, administrative_area_level_1) END
                                                 ELSE
-                                                    REPLACE(search_term,'%20',' ')
+                                                    REPLACE(REPLACE(search_term,'%20',' '),'%2C',',')
                                                 END
                                         END AS location_data
                                 FROM 
