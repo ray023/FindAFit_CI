@@ -55,13 +55,28 @@ class Address extends CI_Controller {
         }
         else
         {
-            $this->load->model('Audit_model');
-            $audit_data['controller']	=	'address';
-            $audit_data['ip_address']	=	$_SERVER['REMOTE_ADDR'];
-            $audit_data['short_description']	=	'Map Error';
-            $audit_data['full_info']	=	$json["status"].' on \''.$address_value.'\'';
-            $this->Audit_model->save_audit_log($audit_data);
-            return;
+            $affil_by_name = false;
+            if ($json["status"] === 'ZERO_RESULTS')
+            {
+                //User might be trying to find affiliate by name.  Search the databae
+                $affil_by_name  =   $this->Affiliates_model->get_affiliate_by_name($address_value);   
+            }
+            
+            if (!!$affil_by_name)
+            {
+                $latitude   =   $affil_by_name['latitude'];
+                $longitude  =   $affil_by_name['longitude'];        
+            }
+            else
+            {
+                $this->load->model('Audit_model');
+                $audit_data['controller']	=	'address';
+                $audit_data['ip_address']	=	$_SERVER['REMOTE_ADDR'];
+                $audit_data['short_description']	=	'Map Error';
+                $audit_data['full_info']	=	$json["status"].' on \''.$address_value.'\'';
+                $this->Audit_model->save_audit_log($audit_data);
+                return;
+            }                    
         }
 
 

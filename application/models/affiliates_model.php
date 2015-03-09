@@ -20,6 +20,16 @@ class Affiliates_model extends CI_Model {
             return $query->result();
         }
         
+        function get_affiliate_by_name($search_term)
+        {
+            $this->db->limit(1);
+            $this->db->like('affil_name', $search_term); 
+            $query = $this->db->get('affiliates');
+
+            $result_array = $query->result_array();
+            return count($result_array) == 0 ? false : $result_array[0];
+        }        
+        
 	function get_affiliates_by_location($latitude = 0, $longitude	=	0, $limit = 5)
 	{
 		$sql	=   "
