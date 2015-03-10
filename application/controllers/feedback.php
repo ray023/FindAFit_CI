@@ -59,7 +59,7 @@ class Feedback extends CI_Controller {
             $this->email->from('ray@wod-minder.com', 'WOD-Minder Admin');
             $this->email->to('ray023@gmail.com');
             $this->email->subject('Find A Fit Feedback');
-            $this->email->message($data['user_feedback']);
+            $this->email->message($data['user_feedback'].'   Contact Info:  '.$data['user_contact']);
             $this->email->send();
 
             return;
