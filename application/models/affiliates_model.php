@@ -44,9 +44,11 @@ class Affiliates_model extends CI_Model {
                                     longitude,
                                     TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1) AS distance,
                                     software,
+                                    software_hyperlink,
                                     drop_in_rate,
                                     twitter,
                                     facebook,
+                                    google_plus,
                                     email,
                                     CONCAT('http://maps.google.com/?saddr=".$latitude.",".$longitude."&daddr=', latitude, ',' , longitude) AS nav_link,
                                     instagram

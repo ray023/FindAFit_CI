@@ -19,6 +19,7 @@ class Feedback extends CI_Controller {
             define('PLATFORM',6);
             define('UUID', 7);
             define('VERSION', 8);
+            define('USER_CONTACT', 9);
 
             $this->load->model('Feedback_model');
 
@@ -38,10 +39,12 @@ class Feedback extends CI_Controller {
                     'device_info_platform'  =>  $this->uri->segment(PLATFORM),
                     'device_info_uuid'      =>  $this->uri->segment(UUID),
                     'device_info_version'   =>  $this->uri->segment(VERSION),
+                    'user_contact'          =>  $this->uri->segment(USER_CONTACT),
              );
             
             foreach ($data as $key => $value) {
-                $data[$key] =  str_replace('%2C',',',str_replace('%27','\'',str_replace('%20', ' ', $value)));
+                $value =  str_replace('%2C',',',str_replace('%27','\'',str_replace('%20', ' ', $value)));
+                $data[$key] =  str_replace('%0A',' ',str_replace('%40','@',$value));
             }
 
             $feedback_count =   $this->Feedback_model->save_feedback($data);
