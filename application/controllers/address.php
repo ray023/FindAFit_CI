@@ -65,7 +65,7 @@ class Address extends CI_Controller {
             if (!!$affil_by_name)
             {
                 $latitude   =   $affil_by_name['latitude'];
-                $longitude  =   $affil_by_name['longitude'];        
+                $longitude  =   $affil_by_name['longitude'];
             }
             else
             {
