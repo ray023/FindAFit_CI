@@ -43,8 +43,27 @@ class Feedback extends CI_Controller {
              );
             
             foreach ($data as $key => $value) {
-                $value =  str_replace('%2C',',',str_replace('%27','\'',str_replace('%20', ' ', $value)));
-                $data[$key] =  str_replace('%0A',' ',str_replace('%40','@',$value));
+                $value = urldecode($value);
+                $value = str_replace("_OPEN_PARENTHESIS_","(",$value);
+                $value = str_replace("_CLOSE_PARENTHESIS_",")",$value);
+                $value = str_replace("_HYPHEN_","-",$value);
+                $value = str_replace("_PERIOD_",".",$value);
+                $value = str_replace("_EXCLAMATION_MARK_","!",$value);
+                $value = str_replace("_TILDE_","~",$value);
+                $value = str_replace("_ASTERISK_","*",$value);
+                $value = str_replace("_APOSTROPHE_","'",$value);
+                $value = str_replace("_COLON_",":",$value);
+                $value = str_replace("_SEMICOLON_",";",$value);
+                $value = str_replace("_AT_SIGN_","@",$value);
+                $value = str_replace("_AMPERSAND_","&",$value);
+                $value = str_replace("_DOUBLE_QUOTE_","\"",$value);
+                $value = str_replace("_PERCENT_","%",$value);
+                $value = str_replace("_QUESTION_","?",$value);
+                $value = str_replace("_COMMA_",",",$value);
+                $value = str_replace("_BACKSLASH_","\\",$value);
+                $value = str_replace("_SLASH_","/",$value);
+                $value = str_replace("_DOLLAR_SIGN_","$",$value);
+                $data[$key] =  $value;
             }
 
             $feedback_count =   $this->Feedback_model->save_feedback($data);
