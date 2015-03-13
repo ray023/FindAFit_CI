@@ -65,9 +65,9 @@ $db['default']['database'] = 'find_a_fit_dev';
 
 //Azure (ClearDb)
 $db['default']['hostname'] = 'us-cdbr-azure-east2-d.cloudapp.net';
-$db['default']['username'] = 'bd3c738be146c8';
-$db['default']['password'] = '49d03cc9';
-$db['default']['database'] = 'FindAFit';
+$db['default']['username'] = 'b23239afbf7ec8';
+$db['default']['password'] = 'd18fe7d5';
+$db['default']['database'] = 'raysgroup2db';
 
 
 //Other config
