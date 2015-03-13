@@ -56,12 +56,21 @@ $db['default']['password'] = 'Garbage111';
 $db['default']['database'] = 'find_a_fit';
  */
 //Development
+/*
 $db['default']['hostname'] = '12.181.19.48';
 $db['default']['username'] = 'root';
 $db['default']['password'] = 'Garbage111';
 $db['default']['database'] = 'find_a_fit_dev';
+*/
+
+//Azure (ClearDb)
+$db['default']['hostname'] = 'us-cdbr-azure-east2-d.cloudapp.net';
+$db['default']['username'] = 'bd3c738be146c8';
+$db['default']['password'] = '49d03cc9';
+$db['default']['database'] = 'FindAFit';
 
 
+//Other config
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;
