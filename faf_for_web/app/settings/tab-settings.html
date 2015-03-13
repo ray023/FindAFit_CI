@@ -1,0 +1,17 @@
+<ion-view view-title="Settings">
+    <ion-content>
+        <ion-list>
+            <div class="list">
+                <div class="item item-divider">
+                    Boxes to return: {{ data.boxResultCount }}
+                </div>
+                <ion-radio ng-repeat="item in data.boxCountList"
+                            ng-value="item.value"
+                            ng-model="data.boxResultCount"
+                            ng-click="saveBoxCount(item.value)">
+                    {{ item.text }}
+                </ion-radio>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

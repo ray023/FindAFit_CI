@@ -1,0 +1,9 @@
+<ion-view view-title="{{data.affil_name}}">
+    <ion-content class="padding">
+        <faf-address-block></faf-address-block>
+        <faf-phone-block        ng-show="!!data.phone"></faf-phone-block>
+        <faf-software-block     ng-show="!!data.software && !data.software_hyperlink"></faf-software-block>
+        <faf-drop-in-rate-block ng-show="!!data.drop_in_rate"></faf-drop-in-rate-block>
+        <faf-media-list></faf-media-list>
+    </ion-content>
+</ion-view>

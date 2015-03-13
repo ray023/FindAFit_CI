@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Find A Fit</title>
+        <link href="lib/css/ionic.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body ng-app="findAFitApplication">
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button></ion-nav-back-button>
+        </ion-nav-bar>
+        <ion-nav-view></ion-nav-view>
+
+        <!-- js References -->
+        <script src="lib/js/ionic.bundle.js"></script>
+        <script src="app/app.js"></script>
+
+        <!-- Controllers -->
+        <script src="app/news/fafNewsCtrl.js"></script>
+        <script src="app/gps/fafGpsCtrl.js"></script>
+        <script src="app/address/fafAddressCtrl.js"></script>
+        <script src="app/feedback/fafFeedbackCtrl.js"></script>
+        <script src="app/settings/fafSettingsCtrl.js"></script>
+
+        <!-- Services -->
+        <script src="app/news/fafNewsSvc.js"></script>
+        <script src="app/gps/fafGpsSvc.js"></script>
+        <script src="app/address/fafAddressSvc.js"></script>
+        <script src="app/feedback/fafFeedbackSvc.js"></script>
+        <script src="app/settings/fafSettingsSvc.js"></script>
+
+        <!-- Directives -->
+        <script src="app/shared/fafSharedDirectives.js"></script>
+
+    </body>
+</html>

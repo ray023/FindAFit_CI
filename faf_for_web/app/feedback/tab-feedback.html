@@ -1,0 +1,15 @@
+<ion-view bar-positive view-title="Feedback">
+    <ion-content class="padding">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <textarea placeholder="Question/Comment/Request/Complaint" ng-model="feedback"></textarea>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Contact Info (if desired)" ng-model="contact">
+            </label>
+        </div>
+        <button ng-click="send(feedback, contact)" class="button button-block button-stable">
+            Submit
+        </button>
+    </ion-content>
+</ion-view>

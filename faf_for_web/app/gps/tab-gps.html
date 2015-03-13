@@ -1,0 +1,15 @@
+<ion-view view-title="GPS">
+  <ion-content>
+        <ion-refresher
+              pulling-text="Pull to refresh..."
+              on-refresh="refreshBoxList()">
+        </ion-refresher>
+        <ion-list>
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="box in data" type="item-text-wrap" href="#/tab/gps/{{box.af_id}}">
+                <h2>{{box.affil_name}}</h2>
+                <p>Distance:  {{box.distance}} miles</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+  </ion-content>
+</ion-view>

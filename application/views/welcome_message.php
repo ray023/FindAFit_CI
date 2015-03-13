@@ -23,7 +23,13 @@
         <div class="col-md-1">
             <a href="http://tinyurl.com/FindAFit-WindowsPhone"><i class="fa fa-windows fa-2x"></i>&nbsp;Windows</a>
         </div>    
-        <div class="col-md-5">
+        <div class="col-md-1">
+            <a href="http://tinyurl.com/FindAFit-Amazon"><i class="fa fa-fire fa-2x"></i>&nbsp;Fire Phone/Kindle</a>
+        </div>    
+        <div class="col-md-1">
+            <a href="http://findafit.info/faf_for_web" target="_blank"><i class="fa fa-globe fa-2x"></i>&nbsp;Web</a>
+        </div>    
+        <div class="col-md-3">
             &nbsp;
         </div>    
     </div>

@@ -1,0 +1,14 @@
+<div class="item item-divider">
+    Address
+</div>
+<div class="row">
+    <div class="col col-67" ng-show="!!data.address1 || !!data.city_state_zip">
+        <div ng-show="!!data.address1">{{data.address1}}</div>
+        <div ng-show="!!data.city_state_zip">{{data.city_state_zip}}</div>
+    </div>
+    <div class="col col-33">
+        <button class="button icon ion-navigate item-icon-left" ng-click="navClick()" ng-show="!!data.nav_link">
+            Go
+        </button>
+    </div>
+</div>

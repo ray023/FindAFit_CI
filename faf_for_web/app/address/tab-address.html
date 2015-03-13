@@ -1,0 +1,19 @@
+<ion-view view-title="Address">
+    <ion-content>
+        <div class="list padding">
+            <label class="item item-input">
+                <input type="text" placeholder="Address, Landmark or Whatever" ng-model="search_term"></input>
+            </label>
+            <button class="button button-block button-stable" ng-click="searchByTerm(search_term)">
+                Search
+            </button>
+        </div>
+        <ion-list>
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="box in data" type="item-text-wrap" href="#/tab/address/{{box.af_id}}">
+                <h2>{{box.affil_name}}</h2>
+                <p>Distance:  {{box.distance}} miles</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

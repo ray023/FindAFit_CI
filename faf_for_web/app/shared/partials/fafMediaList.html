@@ -1,0 +1,33 @@
+<div class="item item-divider">
+    Media
+</div>
+<div class="list">
+    <a class="item item-icon-left" ng-click="siteClick()" href="#" ng-show="!!data.url">
+        <i class="icon ion-ios7-world"></i>
+        Web
+    </a>
+    <a class="item item-icon-left" href="#" ng-click="softwareLinkClick()" ng-show="!!data.software_hyperlink">
+        <i class="icon ion-upload"></i>
+        {{data.software}}
+    </a>
+    <a class="item item-icon-left" href="#" ng-click="facebookClick()" ng-show="!!data.facebook">
+        <i class="icon ion-social-facebook"></i>
+        Facebook
+    </a>
+    <a class="item item-icon-left" href="#" ng-click="twitterClick()" ng-show="!!data.twitter">
+        <i class="icon ion-social-twitter"></i>
+        Twitter
+    </a>
+    <a class="item item-icon-left" href="#" ng-click="googlePlusClick()" ng-show="!!data.google_plus">
+        <i class="icon ion-social-googleplus"></i>
+        Google Plus
+    </a>
+    <a class="item item-icon-left" href="#" ng-click="instagramClick()" ng-show="!!data.instagram">
+        <i class="icon ion-social-instagram"></i>
+        Instagram
+    </a>
+    <a class="item item-icon-left" href="mailto:{{data.email}}" ng-show="!!data.email" >
+        <i class="icon ion-email"></i>
+        {{data.email}}
+    </a>
+</div>
