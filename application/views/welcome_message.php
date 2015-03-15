@@ -23,13 +23,15 @@
       </div>
 
       <div class="row marketing">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
           <h4>Fast</h4>
           <p>Find closest affiliates in seconds.</p>
-
+        </div>
+        <div class="col-lg-6">
           <h4>Free</h4>
           <p>No cost; no ads.</p>
-
+        </div>
+        <div class="col-lg-12">
           <h4>What others are saying</h4>
           <blockquote><p>My Quote</p><small>Ray Nowell</smal></blockquote>
         </div>
