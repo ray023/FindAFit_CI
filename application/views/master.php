@@ -1,18 +1,11 @@
 <!DOCTYPE html> 
-<html> 
+<html lang="en">
 	<head> 
 		<title>Find A Fit</title> 
-		<meta charset="utf-8">
-		<meta name="description" content="Find-A-Fit is a free, open source application to finding the closest affiliated gyms." />
-		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+                <meta name="description" content="Find-A-Fit is a free, open source application to finding the closest affiliated gyms." />
+		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-		<meta name="format-detection" content="telephone=no">
-		<?php //Don't allow user to pinch and zoom on browser.  This may not be an optial setting but trying it to fix Barbell calculator issues ?>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> 
-		
-                <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-	
+		<meta name="format-detection" content="telephone=no" />
 		<?php header('Content-type: text/html; charset=utf-8');?>
 		<?php if (strpos($_SERVER['HTTP_HOST'], 'findafit.info') !== false): ?>
                     <script>
@@ -28,9 +21,13 @@
 		<?php endif; ?>
 	</head>
 <body>
-	<?php $this->load->view($view); ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="<?php echo base_url().'js/jquery.js';?>"></script>
-        <script src="<?php echo base_url().'js/bootstrap.js';?>"></script>
+    <?php $this->load->view($view); ?>
+    
+    <link href="<?php echo base_url().'css/jumbotron-narrow.css';?>" rel="stylesheet">
+    <script src=></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
