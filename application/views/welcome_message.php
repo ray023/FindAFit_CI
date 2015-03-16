@@ -2,9 +2,9 @@
       <div class="header">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="https://facebook.com/findafitapp"><i class="fa fa-facebook-official fa-2x"></i></a></li>
-            <li role="presentation"><a href="https://twitter.com/FindAFit"><i class="fa fa-twitter fa-2x"></i></a></li>
-            <li role="presentation"><a href="https://github.com/ray023/FindAFit"><i class="fa fa-github fa-2x"></i></a></li>
+            <li role="presentation"><a target="_blank" href="https://facebook.com/findafitapp"><i class="fa fa-facebook-official fa-2x"></i></a></li>
+            <li role="presentation"><a target="_blank" href="https://twitter.com/FindAFit"><i class="fa fa-twitter fa-2x"></i></a></li>
+            <li role="presentation"><a target="_blank" href="https://github.com/ray023/FindAFit"><i class="fa fa-github fa-2x"></i></a></li>
           </ul>
         </nav>
         <h3 class="text-muted">&nbsp;</h3>
@@ -33,7 +33,7 @@
         </div>
         <div class="col-lg-12">
           <h4>Sleek</h4>
-            <p>Modern look and feel across all devices.</p>
+            <p>Modern look and feel across iOS and Android devices.</p>
             <div class="row">
                 <div class="col-md-3">
                     <a href="<?php echo base_url().'images/01_news.jpg';?>" class="thumbnail">
@@ -61,15 +61,21 @@
           <h4>What others are saying</h4>
           <blockquote class="bg-info">
               <p>It's the best find a gym app by far. It works as intended quickly.</p>
-              <p>As an affiliate, we get apps like this flooding our inboxes. I hate all of them because they want money, ads, and me to update a profile then people to get a profile to do what your app does 10 times better.</p>
+              <p>As an affiliate, we get apps like this flooding our inboxes. I hate all of them because they want money, ads, and me to update a profile then people to get a profile to do what Find A Fit does 10 times better.</p>
               <p>Congratulations sir. You filled a need in the market.</p>
-              <small>Tom from <a href="http://a2xfit.com/" target="_blank">Wolverine Strength and Conditioning</a></small>
+              <small>Thomas Reesbeck (owner of <a href="http://a2xfit.com/" target="_blank">Wolverine Strength and Conditioning</a>)</small>
           </blockquote>
+          <blockquote class="bg-info">
+              <p><strong>LOVE.</strong></p>
+              <p>Sleek little app with great possibilities! I love to be able to find gyms near me. It will be very useful when traveling.</p>
+              <small>Katie Guillot (athlete)</small>
+          </blockquote>          
         </div>
 
       </div>
 
       <footer class="footer">
+          <p><i>This application is not affiliated with or endorsed by CrossFit Inc.</i></p>
         <p>&copy; o1solution 2015</p>
       </footer>
 
