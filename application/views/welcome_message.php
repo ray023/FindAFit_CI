@@ -61,9 +61,9 @@
           <h4>What others are saying</h4>
           <blockquote class="bg-info">
               <p>It's the best find a gym app by far. It works as intended quickly.</p>
-              <p>As an affiliate, we get apps like this flooding our inboxes. I hate all of them because they want money, adds, and me to update a profile then people to get a profile to do what your app does 10 times better.</p>
+              <p>As an affiliate, we get apps like this flooding our inboxes. I hate all of them because they want money, ads, and me to update a profile then people to get a profile to do what your app does 10 times better.</p>
               <p>Congratulations sir. You filled a need in the market.</p>
-              <small>Tom</small>
+              <small>Tom from <a href="http://a2xfit.com/" target="_blank">Wolverine Strength and Conditioning</a></small>
           </blockquote>
         </div>
 
