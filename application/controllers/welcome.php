@@ -3,8 +3,11 @@
 class Welcome extends CI_Controller {
 	public function index()
 	{
-		//$this->output->enable_profiler(TRUE);
-		
+		$this->load->model('Stats_model');
+                $data['download_count'] = $this->Stats_model->get_download_count();
+                $data['search_count'] = number_format(count($this->Stats_model->get_history()));
+                $data['country_count'] = number_format(count($this->Stats_model->get_country_list()));
+                
 		$this->load->library('user_agent');
 		$data['view']		=	'welcome_message';
 		$this->load->vars($data);

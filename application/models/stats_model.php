@@ -12,6 +12,50 @@ class Stats_model extends CI_Model {
 		parent::__construct();
 	}
         
+        public function get_download_count()
+        {
+            $sql    =   "
+                            SELECT 
+                                     itunes_downloads + android_downloads + windows_downloads + amazon_downloads AS download_count
+                            FROM 
+                                    app_info
+                         ";
+
+            $query = $this->db->query($sql);
+
+            if ($query->num_rows() == 0)
+                return false;
+
+            $d_array = $query->result_array();
+            $first_item = reset($d_array);
+            
+            return $first_item['download_count'];
+        }
+        
+        public function get_country_list()
+        {
+            $sql	=   "
+                                SELECT 
+                                    country_political_long_code, 
+                                    count( country_political_long_code ) AS country_count
+                                FROM 
+                                    `stats`
+                                WHERE 
+                                    IFNULL( country_political_long_code, '' ) <> ''
+                                GROUP BY 
+                                    country_political_long_code
+                                ORDER BY 
+                                    count( country_political_long_code ) DESC, country_political_long_code";
+
+		$query = $this->db->query($sql);
+		
+		if ($query->num_rows() == 0)
+				return false;
+		
+		return $query->result_array();	
+        }
+
+        
         public function processs_record($data)
         {            
             $data['modified_date']	=	date("Y-m-d H:i:s");
