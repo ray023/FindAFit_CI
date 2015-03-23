@@ -32,6 +32,27 @@ class Stats_model extends CI_Model {
             return $first_item['download_count'];
         }
         
+        public function get_city_list()
+        {
+            $sql    =   "SELECT 
+                            locality_political
+                            , count(locality_political) as count_locality_political 
+                        FROM 
+                            `stats` s 
+                        GROUP BY 
+                            locality_political
+                        ORDER BY 
+                            count(locality_political) desc, 
+                            locality_political";
+            
+            $query = $this->db->query($sql);
+
+            if ($query->num_rows() == 0)
+                return false;
+
+            return $query->result_array();	
+
+        }
         public function get_country_list()
         {
             $sql	=   "

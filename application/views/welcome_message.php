@@ -25,7 +25,7 @@
         <div class="row marketing">
             <div class="col-lg-offset-3 col-lg-6 col-lg-offset-3">
                 <small>
-                    <em><strong><?php echo $country_count;?></strong> countries, <strong><?php echo $download_count;?></strong> downloads, <strong><?php echo $search_count;?></strong> searches.</em>
+                    <em><strong><?php echo $download_count;?></strong> downloads, <strong><?php echo $country_count;?></strong> countries, <strong><?php echo $city_count;?></strong> cities, <strong><?php echo $search_count;?></strong> searches.</em>
                 </small>
             </div>
         <div class="col-lg-6">

@@ -6,6 +6,7 @@ class Welcome extends CI_Controller {
 		$this->load->model('Stats_model');
                 $data['download_count'] = $this->Stats_model->get_download_count();
                 $data['search_count'] = number_format(count($this->Stats_model->get_history()));
+                $data['city_count'] = number_format(count($this->Stats_model->get_city_list()));
                 $data['country_count'] = number_format(count($this->Stats_model->get_country_list()));
                 
 		$this->load->library('user_agent');
