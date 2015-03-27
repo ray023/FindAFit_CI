@@ -13,6 +13,7 @@ class Address extends CI_Controller {
     
     public function get_json_with_start_position()
     {
+  
         define('ADDRESS_VALUE'	,3);
         define('RESULT_COUNT'	,4);
 
@@ -33,6 +34,28 @@ class Address extends CI_Controller {
         $stat_data['search_term']   =   $address_value;
         $stat_data['result_count']  =   $result_count;
         $this->Stats_model->save_stat($stat_data);
+        
+        $value = str_replace("_OPEN_PARENTHESIS_","(",$address_value);
+        $value = str_replace("_CLOSE_PARENTHESIS_",")",$value);
+        $value = str_replace("_HYPHEN_","-",$value);
+        $value = str_replace("_PERIOD_",".",$value);
+        $value = str_replace("_EXCLAMATION_MARK_","!",$value);
+        $value = str_replace("_TILDE_","~",$value);
+        $value = str_replace("_ASTERISK_","*",$value);
+        $value = str_replace("_APOSTROPHE_","'",$value);
+        $value = str_replace("_COLON_",":",$value);
+        $value = str_replace("_SEMICOLON_",";",$value);
+        $value = str_replace("_AT_SIGN_","@",$value);
+        $value = str_replace("_AMPERSAND_","&",$value);
+        $value = str_replace("_DOUBLE_QUOTE_","\"",$value);
+        $value = str_replace("_PERCENT_","%",$value);
+        $value = str_replace("_QUESTION_","?",$value);
+        $value = str_replace("_COMMA_",",",$value);
+        $value = str_replace("_BACKSLASH_","\\",$value);
+        $value = str_replace("_SLASH_","/",$value);
+        $value = str_replace("_DOLLAR_SIGN_","$",$value);
+        
+        $address_value = $value;
 
         $return_value   =   file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$address_value.'&key=AIzaSyBecnfstyx5PtF6nJaieEhlP3DpCwTRTzU');
         $json = json_decode($return_value, true);
@@ -64,32 +87,14 @@ class Address extends CI_Controller {
         else
         {
             
-            $value = urldecode($address_value);
-            $value = str_replace("_OPEN_PARENTHESIS_","(",$value);
-            $value = str_replace("_CLOSE_PARENTHESIS_",")",$value);
-            $value = str_replace("_HYPHEN_","-",$value);
-            $value = str_replace("_PERIOD_",".",$value);
-            $value = str_replace("_EXCLAMATION_MARK_","!",$value);
-            $value = str_replace("_TILDE_","~",$value);
-            $value = str_replace("_ASTERISK_","*",$value);
-            $value = str_replace("_APOSTROPHE_","'",$value);
-            $value = str_replace("_COLON_",":",$value);
-            $value = str_replace("_SEMICOLON_",";",$value);
-            $value = str_replace("_AT_SIGN_","@",$value);
-            $value = str_replace("_AMPERSAND_","&",$value);
-            $value = str_replace("_DOUBLE_QUOTE_","\"",$value);
-            $value = str_replace("_PERCENT_","%",$value);
-            $value = str_replace("_QUESTION_","?",$value);
-            $value = str_replace("_COMMA_",",",$value);
-            $value = str_replace("_BACKSLASH_","\\",$value);
-            $value = str_replace("_SLASH_","/",$value);
-            $value = str_replace("_DOLLAR_SIGN_","$",$value);
-            
             $affil_by_name = false;
+            
             if ($json["status"] === 'ZERO_RESULTS')
             {
+                $address_value = urldecode($address_value);
+                $address_value = str_replace("%20", " ", $address_value);
                 //User might be trying to find affiliate by name.  Search the databae
-                $affil_by_name  =   $this->Affiliates_model->get_affiliate_by_name($value);   
+                $affil_by_name  =   $this->Affiliates_model->get_affiliate_by_name($address_value);   
             }
             
             if (!!$affil_by_name)
