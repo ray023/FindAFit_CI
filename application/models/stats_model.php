@@ -126,7 +126,7 @@ class Stats_model extends CI_Model {
                                 FROM 
                                     stats s 
                                 ORDER BY 
-                                        s.created_date DESC";
+                                        s.created_date DESC ";
 
 		$query = $this->db->query($sql);
 		

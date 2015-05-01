@@ -32,7 +32,8 @@ class Legacy_model extends CI_Model {
                                 FROM 
                                     stats fafs 
                                 ORDER BY 
-                                        fafs.created_date DESC";
+                                        fafs.created_date DESC
+                                LIMIT 200";
 
 		$query = $this->db->query($sql);
 		
