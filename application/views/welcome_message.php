@@ -14,7 +14,7 @@
         <h1>Find A Fit</h1>
         <p class="lead">A free, open source app for the traveling athelete.</p>
         <div class="hero-bottom text-white text-center">
-            <p class="label"><a class="btn btn-lg btn-success" href="http://tinyurl.com/FindAFit-iTunes"><i class="fa fa-apple fa-2x"></i></a></p>
+            <p class="label"><a class="btn btn-lg btn-success" href="https://itunes.apple.com/app/apple-store/id940781103?pt=115983802&ct=From%20Website&mt=8"><i class="fa fa-apple fa-2x"></i></a></p>
             <p class="label"><a class="btn btn-lg btn-success" href="http://tinyurl.com/FindAFit-Play"><i class="fa fa-play fa-2x"></i></a></p>
             <p class="label"><a class="btn btn-lg btn-success" href="http://tinyurl.com/FindAFit-WindowsPhone"><i class="fa fa-windows fa-2x"></i></a></p>
             <p class="label"><a class="btn btn-lg btn-success" href="http://tinyurl.com/FindAFit-Amazon"><i class="fa fa-fire fa-2x"></i></a></p>
