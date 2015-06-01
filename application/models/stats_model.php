@@ -1,40 +1,38 @@
 <?php
-/** 
+
+/**
  * Stats_model
  * 
  * @author Ray Nowell
- *	
- */ 
+ * 	
+ */
 class Stats_model extends CI_Model {
-	
-	function Stats_model()
-	{
-		parent::__construct();
-	}
-        
-        public function get_download_count()
-        {
-            $sql    =   "
+
+    function Stats_model() {
+        parent::__construct();
+    }
+
+    public function get_download_count() {
+        $sql = "
                             SELECT 
                                      itunes_downloads + android_downloads + windows_downloads + amazon_downloads AS download_count
                             FROM 
                                     app_info
                          ";
 
-            $query = $this->db->query($sql);
+        $query = $this->db->query($sql);
 
-            if ($query->num_rows() == 0)
-                return false;
+        if ($query->num_rows() == 0)
+            return false;
 
-            $d_array = $query->result_array();
-            $first_item = reset($d_array);
-            
-            return $first_item['download_count'];
-        }
-        
-        public function get_city_list()
-        {
-            $sql    =   "SELECT 
+        $d_array = $query->result_array();
+        $first_item = reset($d_array);
+
+        return $first_item['download_count'];
+    }
+
+    public function get_city_list() {
+        $sql = "SELECT 
                             locality_political
                             , count(locality_political) as count_locality_political 
                         FROM 
@@ -44,18 +42,17 @@ class Stats_model extends CI_Model {
                         ORDER BY 
                             count(locality_political) desc, 
                             locality_political";
-            
-            $query = $this->db->query($sql);
 
-            if ($query->num_rows() == 0)
-                return false;
+        $query = $this->db->query($sql);
 
-            return $query->result_array();	
+        if ($query->num_rows() == 0)
+            return false;
 
-        }
-        public function get_country_list()
-        {
-            $sql	=   "
+        return $query->result_array();
+    }
+
+    public function get_country_list() {
+        $sql = "
                                 SELECT 
                                     country_political_long_code, 
                                     count( country_political_long_code ) AS country_count
@@ -68,24 +65,21 @@ class Stats_model extends CI_Model {
                                 ORDER BY 
                                     count( country_political_long_code ) DESC, country_political_long_code";
 
-		$query = $this->db->query($sql);
-		
-		if ($query->num_rows() == 0)
-				return false;
-		
-		return $query->result_array();	
-        }
+        $query = $this->db->query($sql);
 
-        
-        public function processs_record($data)
-        {            
-            $data['modified_date']	=	date("Y-m-d H:i:s");
-            $this->db->update('stats',   $data, 'stats_id = '.$data['stats_id']);
-        }
-        
-        public function get_unprocessed_faf_records()
-        {
-		$sql	=   "
+        if ($query->num_rows() == 0)
+            return false;
+
+        return $query->result_array();
+    }
+
+    public function processs_record($data) {
+        $data['modified_date'] = date("Y-m-d H:i:s");
+        $this->db->update('stats', $data, 'stats_id = ' . $data['stats_id']);
+    }
+
+    public function get_unprocessed_faf_records() {
+        $sql = "
                                 SELECT 
                                          stats_id
                                         ,latitude
@@ -98,17 +92,29 @@ class Stats_model extends CI_Model {
                                 ORDER BY 
                                         s.created_date DESC";
 
-		$query = $this->db->query($sql);
-		
-		if ($query->num_rows() == 0)
-				return false;
-		
-		return $query->result_array();		            
-        }
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() == 0)
+            return false;
+
+        return $query->result_array();
+    }
+
+    public function get_total_boxes_found() {
+        $sql = "SELECT SUM(result_count) as sum_result FROM stats WHERE IFNULL(result_count,0) <> 0";
+
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() == 0)
+            return false;
         
-        public function get_history()
-	{
-		$sql	=   "
+        $first_item = reset($query->result_array());
+
+        return $first_item['sum_result'];
+    }
+
+    public function get_history() {
+        $sql = "
                                 SELECT 
                                     created_date
                                     , faf_source
@@ -128,26 +134,25 @@ class Stats_model extends CI_Model {
                                 ORDER BY 
                                         s.created_date DESC ";
 
-		$query = $this->db->query($sql);
-		
-		if ($query->num_rows() == 0)
-				return false;
-		
-		return $query->result_array();		
-	}
-        
-        public function save_stat($data=null)
-        {
-            if ($data == null)
-                return;
-            
-            $data['modified_date']	=	date("Y-m-d H:i:s");
-            $data['created_date']       =       date('Y-m-d H:i:s');
+        $query = $this->db->query($sql);
 
-       
-            $this->db->insert('stats', $data);             
-        }
-        
+        if ($query->num_rows() == 0)
+            return false;
+
+        return $query->result_array();
+    }
+
+    public function save_stat($data = null) {
+        if ($data == null)
+            return;
+
+        $data['modified_date'] = date("Y-m-d H:i:s");
+        $data['created_date'] = date('Y-m-d H:i:s');
+
+
+        $this->db->insert('stats', $data);
+    }
+
 }
 
 /* End of file stats_model.php */

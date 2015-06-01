@@ -8,6 +8,8 @@ class Welcome extends CI_Controller {
                 $data['search_count'] = number_format(count($this->Stats_model->get_history()));
                 $data['city_count'] = number_format(count($this->Stats_model->get_city_list()));
                 $data['country_count'] = number_format(count($this->Stats_model->get_country_list()));
+                $data['total_boxes_found'] = number_format($this->Stats_model->get_total_boxes_found());
+                
                 
 		$this->load->library('user_agent');
 		$data['view']		=	'welcome_message';
