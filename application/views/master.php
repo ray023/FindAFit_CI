@@ -2,7 +2,7 @@
 <html lang="en">
 	<head> 
 		<title>Find A Fit</title> 
-                <meta name="description" content="Find-A-Fit is a free, open source application to finding the closest affiliated gyms." />
+                <meta name="description" content="Find-A-Fit is an open source application to finding the closest affiliated gyms." />
 		<meta name="viewport" content="width=device-width, initial-scale=1" /> 
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 		<meta name="format-detection" content="telephone=no" />

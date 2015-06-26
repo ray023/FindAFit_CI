@@ -12,13 +12,13 @@
 
     <div class="jumbotron">
         <h1>Find A Fit</h1>
-        <p class="lead">A free, open source app for the traveling athlete.</p>
+        <p class="lead">An open source app for the traveling athlete.</p>
         <div class="hero-bottom text-white text-center">
             <p class="label"><a class="btn btn-lg btn-success" href="https://itunes.apple.com/app/apple-store/id940781103?pt=115983802&ct=From%20Website&mt=8"><i class="fa fa-apple fa-2x"></i></a></p>
             <p class="label"><a class="btn btn-lg btn-success" href="http://tinyurl.com/FindAFit-Play"><i class="fa fa-play fa-2x"></i></a></p>
             <p class="label"><a class="btn btn-lg btn-success" href="http://tinyurl.com/FindAFit-WindowsPhone"><i class="fa fa-windows fa-2x"></i></a></p>
             <p class="label"><a class="btn btn-lg btn-success" href="http://tinyurl.com/FindAFit-Amazon"><i class="fa fa-fire fa-2x"></i></a></p>
-            <p class="label"><a class="btn btn-lg btn-success" href="http://findafit.info/faf_for_web" target="_blank"><i class="fa fa-globe fa-2x"></i></a></p>
+            <!--<p class="label"><a class="btn btn-lg btn-success" href="http://findafit.info/faf_for_web" target="_blank"><i class="fa fa-globe fa-2x"></i></a></p>-->
         </div>
     </div>
 
@@ -32,14 +32,6 @@
             <small>
                 <em>Total boxes found:  <strong><?php echo $total_boxes_found; ?>!</strong></em>
             </small>
-        </div>
-        <div class="col-lg-6">
-            <h4>Fast</h4>
-            <p>Find closest affiliates in seconds.</p>
-        </div>
-        <div class="col-lg-6">
-            <h4>Free</h4>
-            <p>No cost; no ads.</p>
         </div>
         <div class="col-lg-6">
             <h4>Sleek</h4>
