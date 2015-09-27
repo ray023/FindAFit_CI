@@ -53,6 +53,20 @@ class Events extends CI_Controller {
             ->set_output(json_encode($event_list));
 
     }
+    
+    public function update_events_from_azure_to_local()
+    {
+        $this->load->model('Events_model');
+        $sql = file_get_contents('http://crossfitaffilweb.azurewebsites.net/');
+        $sql = str_replace('<span id="viewStuff">', '', $sql);
+        $sql = str_replace('</span>', '', $sql);
+        $sql_array = explode(';',$sql);
+        foreach ($sql_array as $value)
+            if (rtrim($value) != '')
+               $this->Events_model->update_via_azure($value);
+         
+        echo 'done';
+    }
 
 }
 

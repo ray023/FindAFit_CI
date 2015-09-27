@@ -35,11 +35,16 @@ class Events_model extends CI_Model {
                                 LIMIT ".$limit." 
                             ";
 		
-		$query		= $this->db->query($sql);	
+		$query		= $this->db->query($sql);
 
 		return $query->result();
 
 	}
+        
+        function update_via_azure($sql)
+        {
+            return $this->db->query($sql);
+        }
 	
 }
 
