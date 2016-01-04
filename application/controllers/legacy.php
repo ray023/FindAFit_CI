@@ -68,6 +68,12 @@ class Legacy extends CI_Controller {
 		 );
 
 		$feedback_count =   $this->Feedback_model->save_feedback($data);
+                
+                if (trim($data['user_feedback']) === '')
+                {
+                    echo 'Error receiving feedback.  Email ray023@gmail.com';
+                    return;
+                }
 
 		echo 'Feedback submitted successfully.  Thank-you!';
 		
