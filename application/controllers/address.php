@@ -26,6 +26,9 @@ class Address extends CI_Controller {
         $this->load->model('Stats_model');
         $this->load->model('Audit_model');
         
+        if ($this->Audit_model->user_is_over_search_limit())
+            return;
+        
         $address_value   =   $this->uri->segment(ADDRESS_VALUE);
         $result_count   =   $this->uri->segment(RESULT_COUNT);
 
@@ -150,6 +153,9 @@ class Address extends CI_Controller {
         $this->load->model('Affiliates_model');
         $this->load->model('Stats_model');
         $this->load->model('Audit_model');
+        
+        if ($this->Audit_model->user_is_over_search_limit())
+            return;
         
         $address_value   =   $this->uri->segment(ADDRESS_VALUE);
         $result_count   =   $this->uri->segment(RESULT_COUNT);

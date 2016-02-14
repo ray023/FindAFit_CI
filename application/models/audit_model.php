@@ -15,6 +15,25 @@ class Audit_model extends CI_Model {
     }	
 
 
+    public function user_is_over_search_limit()
+    {
+        $sql = "SELECT 
+                    ip_address, count(ip_address) as count_ip
+                FROM 
+                    stats
+                WHERE 
+                    created_date >= DATE_SUB(CURDATE(), INTERVAL 1 DAY)  AND
+                    ip_address = '".$_SERVER['REMOTE_ADDR']."'
+                GROUP BY
+                    ip_address
+                HAVING 
+                    count(ip_address) > 5 ";
+        
+            $query = $this->db->query($sql);
+
+            return ($query->num_rows() > 0);
+        
+    }
     public function save_audit_log($data)
     {
         $this->db->insert('audit_log', $data);
