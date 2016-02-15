@@ -27,7 +27,7 @@ class Audit_model extends CI_Model {
                 GROUP BY
                     ip_address
                 HAVING 
-                    count(ip_address) > 5 ";
+                    count(ip_address) > 25 ";
         
             $query = $this->db->query($sql);
 

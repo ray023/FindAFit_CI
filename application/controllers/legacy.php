@@ -37,6 +37,50 @@ class Legacy extends CI_Controller {
              * 
              */
 	}
+        
+    function _address_search_limit_reached()
+    {
+        $this->load->model('Audit_model');
+            $audit_data['controller']	=	'address';
+            $audit_data['ip_address']	=	$_SERVER['REMOTE_ADDR'];
+            $audit_data['short_description']	=	'Search Limit Reached (current)';
+            $audit_data['full_info']	=	'User searching too much';
+            $this->Audit_model->save_audit_log($audit_data);
+                
+            $over_limit_array = [array(
+                                    'af_id' => 1,
+                                    'affil_name' => 'LIMIT REACHED:  Try tomorrow',
+                                    'url' => 'http://www.google.com',
+                                    'address1' => 'abc',
+                                    'city_state_zip' => 'Trussville AL 35173',
+                                    'phone' => '',
+                                    'latitude' => '86',
+                                    'longitude' => '-33',
+                                    'distance' => '-99',
+                                    'software' => '',
+                                    'software_hyperlink' => '',
+                                    'drop_in_rate' => '',
+                                    'twitter' => '',
+                                    'facebook' => '',
+                                    'google_plus' => '',
+                                    'email' => '',
+                                    'nav_link' => 'http://maps.google.com/?saddr=33.6015246,-86.4895463&daddr=33,-86',
+                                    'instagram'  => ''
+            )];
+            $sp = array(
+                'search_term' => 'Search',
+                'latitude' => -86,
+                'longitude' => 33,
+            );
+            
+        
+            $r = Array(
+                'start_position' => $sp,
+                'affil_list' => $over_limit_array,
+            );
+        
+            return $r;
+    }
                 
 	public function ajax_submit_feedback()
 	{
@@ -127,6 +171,15 @@ class Legacy extends CI_Controller {
 		}
 		elseif ($info_source === 'address_field')
 		{
+                    $this->load->model('Audit_model');
+                        if ($this->Audit_model->user_is_over_search_limit())
+                        {
+                            $t = $this->_address_search_limit_reached();
+                            $this->output
+                                ->set_content_type('application/json')
+                                ->set_output(json_encode($t));
+                            return;
+                        }
 			$address_value	=	$this->uri->segment(ADDRESS_VALUE);
 			
                         $stat_data['ip_address']    =	$_SERVER['REMOTE_ADDR'];
@@ -136,6 +189,54 @@ class Legacy extends CI_Controller {
 			
 			$return_value	=	file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address='.$address_value.'&key=AIzaSyBecnfstyx5PtF6nJaieEhlP3DpCwTRTzU');
 			$json = json_decode($return_value, true);
+                        
+                        //Got hacked by some German ass constantly pinging this code; 
+                        //returning "over the limit box if that happens"
+                        if ($json["status"] === "OVER_QUERY_LIMIT" )
+                        {
+                            $audit_data['controller']	=	'address';
+                            $audit_data['ip_address']	=	$_SERVER['REMOTE_ADDR'];
+                            $audit_data['short_description']	=	'Quota Limit Reached (legacy)';
+                            $audit_data['full_info']	=	$json["status"].' on \''.$address_value.'\'';
+                            $this->Audit_model->save_audit_log($audit_data);
+
+                            $over_limit_array = [array(
+                                                    'af_id' => 1,
+                                                    'affil_name' => 'QUOTA LIMIT:  Try tomorrow',
+                                                    'url' => 'http://www.google.com',
+                                                    'address1' => 'abc',
+                                                    'city_state_zip' => 'Trussville AL 35173',
+                                                    'phone' => '',
+                                                    'latitude' => '86',
+                                                    'longitude' => '-33',
+                                                    'distance' => '-99',
+                                                    'software' => '',
+                                                    'software_hyperlink' => '',
+                                                    'drop_in_rate' => '',
+                                                    'twitter' => '',
+                                                    'facebook' => '',
+                                                    'google_plus' => '',
+                                                    'email' => '',
+                                                    'nav_link' => 'http://maps.google.com/?saddr=33.6015246,-86.4895463&daddr=33,-86',
+                                                    'instagram'  => ''
+                            )];
+                            $sp = array(
+                                'search_term' => $address_value,
+                                'latitude' => -86,
+                                'longitude' => 33,
+                            );
+
+
+                            $r = Array(
+                                'start_position' => $sp,
+                                'affil_list' => $over_limit_array,
+                            );
+
+                            $this->output
+                                ->set_content_type('application/json')
+                                ->set_output(json_encode($r));
+                            return;
+                        }
 			
 			if ($json["status"] === "OK" )
 			{
