@@ -60,7 +60,8 @@ class Legacy_model extends CI_Model {
                                 FROM 
                                         stats fafs 
                                 WHERE
-                                        ifnull(processed,0) = 0 
+                                        ifnull(processed,0) = 0 AND 
+                                        ifnull(latitude,0) <> 0
                                 ORDER BY 
                                         fafs.created_date DESC";
 
