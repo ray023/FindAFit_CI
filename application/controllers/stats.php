@@ -78,7 +78,7 @@ class Stats extends CI_Controller {
                         }
                         else
                         {
-                            $update_array   =   false;
+                                $update_array['locality_political'] = 'Big Fat Error';
                                 //START AUDIT
                                 $this->load->model('Audit_model');
                                 $audit_data['controller']	=	'faf_process_record';
@@ -87,7 +87,9 @@ class Stats extends CI_Controller {
                                 $audit_data['full_info']	=	$json["status"];
                                 $this->Audit_model->save_audit_log($audit_data);
                                 //END AUDIT
-                                return;
+                                if ($json["status"] === "OVER_QUERY_LIMIT")
+                                    return;
+                                continue;
                         }
                     }
                     else
@@ -101,7 +103,7 @@ class Stats extends CI_Controller {
                         $audit_data['full_info']	=	'Json not an array';
                         $this->Audit_model->save_audit_log($audit_data);
                         //END AUDIT
-                        return;
+                        continue;
                     }
                 }
                 
