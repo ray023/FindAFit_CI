@@ -65,6 +65,50 @@ class Affiliates_model extends CI_Model {
 
 	}
 	
+        function get_affiliates_by_location_2017_03($latitude = 0, $longitude	=	0, $limit = 5)
+	{
+		$sql	=   "
+                                SELECT 
+                                    f.af_id,
+                                    f.affil_name,
+                                    CASE WHEN f.url = 'false' THEN '' ELSE f.url END AS url,
+                                    f.address1,
+                                    f.city_state_zip,
+                                    f.phone,
+                                    f.latitude,
+                                    f.longitude,
+                                    TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1) AS distance,
+                                    g.preferred_order,
+                                    g.preferred_expiration,
+                                    g.software,
+                                    g.software_hyperlink,
+                                    g.facebook,
+                                    g.google_plus,
+                                    g.twitter,
+                                    g.instagram,
+                                    g.youtube,
+                                    g.snapchat,
+                                    g.email,
+                                    g.note_to_drop_in,
+                                    g.drop_in_rate,
+                                    CONCAT('http://maps.google.com/?saddr=".$latitude.",".$longitude."&daddr=', latitude, ',' , longitude) AS nav_link
+                                FROM 
+                                    affiliates f 
+                                        LEFT JOIN 
+                                           affiliates_custom g ON
+                                            f.crossfit_affiliate_id = g.crossfit_affiliate_id
+                                WHERE
+                                    IFNULL(hide_from_results,0) = 0
+                                ORDER BY 
+                                    distance 
+                                LIMIT ".$limit." 
+                            ";
+		
+		$query		= $this->db->query($sql);	
+
+		return $query->result();
+
+	}
 }
 
 /* End of file affiliates_model.php */
