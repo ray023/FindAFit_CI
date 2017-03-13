@@ -229,7 +229,7 @@ class Address extends CI_Controller {
         else
             $result_count = 5;
 
-        $affiliate_list	=	$this->Affiliates_model->get_affiliates_by_location($latitude, $longitude, $result_count);
+        $affiliate_list	=	$this->Affiliates_model->get_affiliates_by_location_2017_03($latitude, $longitude, $result_count);
         
         $return_array = Array(
             'start_position' => $start_position,
@@ -379,7 +379,7 @@ class Address extends CI_Controller {
         else
             $result_count = 5;
 
-        $affiliate_list	=	$this->Affiliates_model->get_affiliates_by_location($latitude, $longitude, $result_count);
+        $affiliate_list	=	$this->Affiliates_model->get_affiliates_by_location_2017_03($latitude, $longitude, $result_count);
 
         $this->output
             ->set_content_type('application/json')
