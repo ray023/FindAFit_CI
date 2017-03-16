@@ -79,6 +79,7 @@ class Affiliates_model extends CI_Model {
                                     f.longitude,
                                     TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1) AS distance,
                                     CASE WHEN ifnull(g.crossfit_affiliate_id,0) > 0 THEN 1 ELSE 0 END as drop_in_friendly,
+                                    CASE WHEN IFNULL(g.preferred_order,9999) < 9999 THEN 1 ELSE 0 END as is_preferred,
                                     IFNULL(g.preferred_order,9999) as preferred_order,
                                     g.preferred_expiration,
                                     g.software,
