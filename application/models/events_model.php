@@ -28,7 +28,9 @@ class Events_model extends CI_Model {
                                 FROM 
                                     events f
                                 WHERE 
-                                    title NOT LIKE '% Test%'
+                                    title NOT LIKE '% Test%' AND
+                                    TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1)
+                                        < 500
                                 ORDER BY 
                                     distance,
                                     start_date
