@@ -1,8 +1,21 @@
 <div class="container">
-    <h1>JUMP in front of the crowd!!</h1>
+    <h1><span class="label label-info">GET NOTICED!</span></h1>
     <p>With thousands of downloads and daily use across the globe, let Find-A-Fit help bring in the business.</p>
-    <p>For the cost of an app, you can list your drop-in rate, drop-in link, a message to potential customers and all your Social Media links. Your box will be featured as "Drop-In Friendly" in the results</p>
-    <p>Want to go the extra mail?  For the cost of a drop-in, you can go <bold>PREFERRED</bold>!  Your box will always be listed first for potential clients!</p>
+    <p>Choose between two upgraded listings</p>
+    <div class="panel panel-info">
+      <div class="panel-heading">Drop-In Friendly ($3.99)</div>
+      <div class="panel-body">
+        <p>For the cost of an app, you can list your drop-in rate, drop-in link, a message to potential customers and all your Social Media links. Your box will be featured as "Drop-In Friendly" in the results.</p>
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">Preferred ($39.99)</div>
+      <div class="panel-body">
+          <p>For the cost of a drop-in, you get all the benefits of Drop-In Friendly AND your box will always be listed <strong>FIRST</strong> for potential clients!</p>
+      </div>
+    </div>
+        
+    
     <div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_s-xclick">
@@ -14,8 +27,8 @@
             <tr>
                 <td>
                     <select name="os0">
-                        <option value="Preferred Listing">Preferred Listing $39.99 USD</option>
                         <option value="Drop-In Friendly">Drop-In Friendly $3.99 USD</option>
+                        <option value="Preferred Listing">Preferred Listing $39.99 USD</option>
                     </select> 
                 </td>
             </tr>
