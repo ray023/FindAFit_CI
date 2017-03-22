@@ -34,29 +34,29 @@ class Affiliates_model extends CI_Model {
 	{
 		$sql	=   "
                                 SELECT 
-                                    af_id,
-                                    affil_name,
-                                    url,
-                                    address1,
-                                    city_state_zip,
-                                    phone,
+                                    1 as af_id,
+                                    'TIME TO UPGRADE to 2.0.5' as affil_name,
+                                    '' as url,
+                                    'Upgrade in the app store' as address1,
+                                    '' as city_state_zip,
+                                    '' as phone,
                                     latitude,
                                     longitude,
-                                    TRUNCATE(SQRT(POWER((69.1 * (latitude - ".$latitude.") ), 2) + POWER((69.1 * (".$longitude." - longitude)) * COS(latitude / 57.3), 2)),1) AS distance,
-                                    software,
-                                    software_hyperlink,
-                                    drop_in_rate,
-                                    twitter,
-                                    facebook,
-                                    google_plus,
-                                    email,
-                                    CONCAT('http://maps.google.com/?saddr=".$latitude.",".$longitude."&daddr=', latitude, ',' , longitude) AS nav_link,
-                                    instagram
+                                    1 distance,
+                                    '' as software,
+                                    '' as software_hyperlink,
+                                    '' as drop_in_rate,
+                                    '' as twitter,
+                                    '' as facebook,
+                                    '' as google_plus,
+                                    '' as email,
+                                    CONCAT('http://maps.google.com/?saddr=33,-86&daddr=', latitude, ',' , longitude) AS nav_link,
+                                    '' as instagram
                                 FROM 
                                     affiliates f
                                 ORDER BY 
                                     distance
-                                LIMIT ".$limit." 
+                                LIMIT 1
                             ";
 		
 		$query		= $this->db->query($sql);	
