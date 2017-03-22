@@ -3,6 +3,14 @@
 class Getupgraded extends CI_Controller {
 	public function index()
 	{
+            
+            $this->load->model('Audit_model');
+            
+            $audit_data['controller']	=   'Viewed Upgrade';
+            $audit_data['ip_address']	=   $_SERVER['REMOTE_ADDR'];
+            $audit_data['short_description']=   'User clicked on link to view how to upgrade';
+            $this->Audit_model->save_audit_log($audit_data);
+            
 		$data['view']		=	'get_upgraded';
 		$this->load->vars($data);
 		$this->load->view('master', $data);
