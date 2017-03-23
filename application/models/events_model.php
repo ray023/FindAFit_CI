@@ -12,7 +12,7 @@ class Events_model extends CI_Model {
 		parent::__construct();
 	}    
         
-	function get_events_by_location($latitude = 0, $longitude	=	0, $limit = 100)
+	function get_events_by_location($latitude = 0, $longitude	=	0, $limit = 1000)
 	{
 		$sql	=   "
                                 SELECT 
