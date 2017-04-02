@@ -48,7 +48,12 @@ class Legacy_model extends CI_Model {
             $data['modified_date']	=	date("Y-m-d H:i:s");
             $this->db->update('stats',   $data, 'stats_id = '.$data['stats_id']);
         }
-        
+        public function close_records_unable_to_process()
+        {
+            $sql	=   "UPDATE stats set processed = 1 WHERE ifnull(processed, 0) = 0;";
+
+            $query = $this->db->query($sql);
+        }
         public function get_unprocessed_faf_records()
         {
 		$sql	=   "

@@ -111,6 +111,8 @@ class Stats extends CI_Controller {
                 if (!!$update_array)
                     $this->Legacy_model->processs_record($update_array);
            }
+           
+           $this->Legacy_model->close_records_unable_to_process();
                 
         }
         
