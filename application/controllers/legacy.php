@@ -158,7 +158,7 @@ class Legacy extends CI_Controller {
 
 
             $stat_data['ip_address'] = $_SERVER['REMOTE_ADDR'];
-            $stat_data['faf_source'] = $app_source;
+            $stat_data['faf_source'] = $app_source.' deprecated';
             $stat_data['latitude'] = $latitude;
             $stat_data['longitude'] = $longitude;
             $this->Legacy_model->save_stat($stat_data);
@@ -174,13 +174,14 @@ class Legacy extends CI_Controller {
             $address_value = $this->uri->segment(ADDRESS_VALUE);
 
             $stat_data['ip_address'] = $_SERVER['REMOTE_ADDR'];
-            $stat_data['faf_source'] = $app_source;
+            $stat_data['faf_source'] = $app_source.' deprecated';
             $stat_data['search_term'] = $address_value;
             $this->Legacy_model->save_stat($stat_data);
-
+            /*
             $return_value = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . $address_value . '&key=AIzaSyBecnfstyx5PtF6nJaieEhlP3DpCwTRTzU');
             $json = json_decode($return_value, true);
 
+            
             //Got hacked by some German ass constantly pinging this code; 
             //returning "over the limit box if that happens"
             if ($json["status"] === "OVER_QUERY_LIMIT") {
@@ -250,11 +251,12 @@ class Legacy extends CI_Controller {
                 echo '<span class="error-messsage">MAP ERROR:  ' . $json["status"] . '</span>';
                 return;
             }
+            */
         } else {
             echo 'Source ' . $info_source . ' is not defined.';
             return;
         }
-
+/*
         $result_count = $this->uri->segment(RESULT_COUNT);
 
         if (is_numeric($result_count) && $result_count <= 50) {
@@ -266,11 +268,12 @@ class Legacy extends CI_Controller {
 
         $this->load->model('Legacy_model');
         $facilities_array = $this->Legacy_model->get_closest_crossfits($latitude, $longitude, $result_count);
-
+*/
         echo '<div class = "ui-grid-b">';
-        echo '<div class="ui-block-a mobile-grid-header " style = "height:60px;text-align: center;">Affiliate</div>' .
-        '<div class="ui-block-b mobile-grid-header " style = "height:60px;text-align: center;">Distance<br>(approx.)</div>' .
-        '<div class="ui-block-c mobile-grid-header"  style = "height:60px;text-align: center;">Directions</div>';
+        echo '<div class="ui-block-a mobile-grid-header " style = "height:60px;text-align: center;">Upgrade</div>' .
+        '<div class="ui-block-b mobile-grid-header " style = "height:60px;text-align: center;">this</div>' .
+        '<div class="ui-block-c mobile-grid-header"  style = "height:60px;text-align: center;">app</div>';
+        /*
         foreach ($facilities_array as $row) {
             $google_search_affiliate = '<a href="#" OnClick="window.open(\'https://www.google.com/?gws_rd=ssl#q=' . str_replace(' ', '+', $row['affil_name']) . '\', \'_system\', \'\');" data-ajax="false">' . $row['affil_name'] . '</a>';
             $box = (is_null($row['url']) | $row['url'] === '') ? $google_search_affiliate : '<a href="#" OnClick="window.open(\'' . $row['url'] . '\', \'_system\', \'\');" data-ajax="false">' . $row['affil_name'] . '</a>';
@@ -281,6 +284,7 @@ class Legacy extends CI_Controller {
 
             $full_info .= '|' . $row['affil_name'];
         }
+        */
         echo '</div><!--/grid-a-->';
     }
 
@@ -297,9 +301,11 @@ class Legacy extends CI_Controller {
         $facilities_array = $this->Legacy_model->get_closest_crossfits($latitude, $longitude);
 
         echo '<div class = "ui-grid-b">';
-        echo '<div class="ui-block-a mobile-grid-header " style = "height:60px;text-align: center;">Affiliate</div>' .
-        '<div class="ui-block-b mobile-grid-header " style = "height:60px;text-align: center;">Distance<br>(approx.)</div>' .
-        '<div class="ui-block-c mobile-grid-header"  style = "height:60px;text-align: center;">Directions</div>';
+        echo '<div class="ui-block-a mobile-grid-header " style = "height:60px;text-align: center;">Upgrade</div>' .
+        '<div class="ui-block-b mobile-grid-header " style = "height:60px;text-align: center;">this</div>' .
+        '<div class="ui-block-c mobile-grid-header"  style = "height:60px;text-align: center;">app</div>';
+        
+        /*
         foreach ($facilities_array as $row) {
             $google_search_affiliate = '<a href="#" OnClick="window.open(\'https://www.google.com/?gws_rd=ssl#q=' . str_replace(' ', '+', $row['affil_name']) . '\', \'_system\', \'\');" data-ajax="false">' . $row['affil_name'] . '</a>';
             $box = (is_null($row['url']) | $row['url'] === '') ? $google_search_affiliate : '<a href="#" OnClick="window.open(\'' . $row['url'] . '\', \'_system\', \'\');" data-ajax="false">' . $row['affil_name'] . '</a>';
@@ -308,11 +314,12 @@ class Legacy extends CI_Controller {
             echo '<div class = "ui-block-b "><div class = "ui-bar ui-bar-a" style = "height:60px;text-align: center;">' . $row['distance'] . '</div></div>';
             echo '<div class = "ui-block-c number-block"><div class = "ui-bar ui-bar-a" style = "height:60px;text-align: center;"><a href="#" OnClick="window.open(\'http://maps.google.com/?saddr=' . $latitude . ',' . $longitude . '&daddr=' . $row['latitude'] . ',' . $row['longitude'] . '\', \'_system\', \'\');" data-ajax="false" class="ui-btn ui-icon-navigation ui-btn-icon-notext ui-corner-all" >Navigate</a></div></div>';
         }
+        */
         echo '</div><!--/grid-a-->';
 
 
         $stat_data['ip_address'] = $_SERVER['REMOTE_ADDR'];
-        $stat_data['faf_source'] = 'o_mobile';
+        $stat_data['faf_source'] = 'o_mobile deprecated';
         $stat_data['latitude'] = $latitude;
         $stat_data['longitude'] = $longitude;
         $this->Legacy_model->save_stat($stat_data);
@@ -341,9 +348,10 @@ class Legacy extends CI_Controller {
         $facilities_array = $this->Legacy_model->get_closest_crossfits($latitude, $longitude);
 
         echo '<div class = "ui-grid-b">';
-        echo '<div class="ui-block-a mobile-grid-header " style = "height:60px;text-align: center;">Affiliate</div>' .
-        '<div class="ui-block-b mobile-grid-header " style = "height:60px;text-align: center;">Distance<br>(approx.)</div>' .
-        '<div class="ui-block-c mobile-grid-header"  style = "height:60px;text-align: center;">Directions</div>';
+        echo '<div class="ui-block-a mobile-grid-header " style = "height:60px;text-align: center;">Invalid</div>' .
+        '<div class="ui-block-b mobile-grid-header " style = "height:60px;text-align: center;">link</div>' .
+        '<div class="ui-block-c mobile-grid-header"  style = "height:60px;text-align: center;"></div>';
+  /*      
         foreach ($facilities_array as $row) {
             $google_search_affiliate = '<a href="https://www.google.com/?gws_rd=ssl#q=' . str_replace(' ', '+', $row['affil_name']) . '" data-ajax="false">' . $row['affil_name'] . '</a>';
             $box = (is_null($row['url']) | $row['url'] === '') ? $google_search_affiliate : '<a href="' . $row['url'] . '" data-ajax="false">' . $row['affil_name'] . '</a>';
@@ -353,10 +361,10 @@ class Legacy extends CI_Controller {
             echo '<div class = "ui-block-c number-block"><div class = "ui-bar ui-bar-a" style = "height:60px;text-align: center;"><a href="http://maps.google.com/?saddr=' . $latitude . ',' . $longitude . '&daddr=' . $row['latitude'] . ',' . $row['longitude'] . '" class="ui-btn ui-icon-navigation ui-btn-icon-notext ui-corner-all" >Navigate</a></div></div>';
         }
         echo '</div><!--/grid-a-->';
-
+*/
 
         $stat_data['ip_address'] = $_SERVER['REMOTE_ADDR'];
-        $stat_data['faf_source'] = 'browser';
+        $stat_data['faf_source'] = 'browser deprecated';
         $stat_data['latitude'] = $latitude;
         $stat_data['longitude'] = $longitude;
         $this->Legacy_model->save_stat($stat_data);
