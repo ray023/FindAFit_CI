@@ -2,34 +2,6 @@
 
 class Stats extends CI_Controller {
     
-        public function return_zip($lat = 33.66709656096435, $long = -86.43232602538318)
-        {
-            $return_value   =   file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$lat.','.$long.'&key=AIzaSyBecnfstyx5PtF6nJaieEhlP3DpCwTRTzU');
-            $json = json_decode($return_value, true);
-            
-            if ( $json["status"] !== "OK" )
-                return;
-            
-            if (!isset($json["results"][0]['address_components'][6]["short_name"]))
-                return;
-            
-            $zip_code = $json["results"][0]['address_components'][6]["short_name"];
-            
-            if (!isset($json["results"][0]['address_components'][4]["short_name"]))
-                return;
-            
-            $state = $json["results"][0]['address_components'][4]["short_name"];
-            
-            $a = file_get_contents('https://api.data.gov/ed/collegescorecard/v1/schools.json?id=100858,100751&_fields=id,school.price_calculator_url,school.city,school.name,1998.student.size,2014.student.size,2014.cost.tuition.in_state&api_key=wQhoDEaVWaBzVmb4pMwQffBd2Rb1rCnSDtq5ibAw');
-            echo $a;
-            /*foreach($json["results"][0]['address_components'][7] as $key => $value) {
-                echo "$key => $value<br>";
-            }*/
-            //$a = $json["results"][0];
-            //var_dump($a);
-            
-            return;// $json["results"]["address_components"]
-        }
         public function _process_records()
         {                
             $json_row   =   '';
@@ -47,7 +19,7 @@ class Stats extends CI_Controller {
 
                 if ($row['search_term']   === '')
                 {
-                    $return_value   =   file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$row['latitude'].','.$row['longitude'].'&key=AIzaSyBecnfstyx5PtF6nJaieEhlP3DpCwTRTzU');
+                    $return_value   =   file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$row['latitude'].','.$row['longitude'].'&key=MY_GOOGLE_API_KEY');
                     $json = json_decode($return_value, true);
                     
                     if (is_array($json))

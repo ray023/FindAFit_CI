@@ -48,26 +48,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-//Production
-/*
+//Fake
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'wodminder';
-$db['default']['password'] = 'Garbage111';
+$db['default']['username'] = 'USER_NAME';
+$db['default']['password'] = 'MY_PASSWORD';
 $db['default']['database'] = 'find_a_fit';
- */
-//Development
-$db['default']['hostname'] = '12.181.19.48';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'Garbage111';
-$db['default']['database'] = 'find_a_fit_dev';
-
-/*
-//Azure (ClearDb
-$db['default']['hostname'] = 'us-cdbr-azure-east2-d.cloudapp.net';
-$db['default']['username'] = 'b23239afbf7ec8';
-$db['default']['password'] = 'd18fe7d5';
-$db['default']['database'] = 'raysgroup2db';
-*/
 
 
 //Other config
